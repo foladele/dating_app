@@ -1,2 +1,21 @@
-<h1>Hobbies#index</h1>
-<p>Find me in app/views/hobbies/index.html.erb</p>
+
+<h1>
+  <%= @person.name %> 
+</h1>
+<hr />
+
+<% if @hobbies.any? %>
+  <ul>
+    <% @hobbies.each do |hobby| %>
+      <li>
+        <%= link_to hobby.description, person_hobby_path(@person, hobby) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>No hobbies, please add one!</h3>
+<% end %>
+
+<hr />
+<%= link_to "New", new_person_hobby_path(@person, @hobby) %>
+<%= link_to "Back", person_path(@person) %>

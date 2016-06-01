@@ -13,6 +13,7 @@ class PeopleController < ApplicationController
   def show
   	@person = Person.find(params[:id])
     @user = current_user
+    @person.address
   end
 
   def new

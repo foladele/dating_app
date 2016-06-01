@@ -1,13 +1,19 @@
 
 <div class ="home">
 	<%if @person.user_id == @user.id %>
-		<h3>Hello <%= @person.name %>!</h3>
+		<h3><%= @person.name %>'s Profile</h3>
 	<%else%>
 		<h3>More about <%= @person.name %> ...</h3>
 	<%end%>
-
-
 </div>
+
+<h3>
+	<span>Age:</span>
+	<span><%= @person.age %></span>
+	<br/>
+	<span>Gender:</span>
+	<span><%= @person.gender %></span>
+</h3>
 
 <%= image_tag @person.image.url(:medium) %>
 <hr/>
@@ -29,7 +35,8 @@
 <%end%>
 
 <% if @person.hobbies != nil %>
-	<%= link_to '<button type="button"> See hobbies </button>'.html_safe, person_hobby_path(@person, @person.hobbies) %>
+	<%= link_to '<button type="button"> See hobbies 
+	</button>'.html_safe, person_hobbies_path(@person) %>
 <%end%>  
 
 <%if @person.user_id != @user.id %>
