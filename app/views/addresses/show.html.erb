@@ -1,0 +1,24 @@
+<h1 class ="home" >Address</h1>
+
+<h3 class = "signin">
+
+    <span>Street:</span>
+	<span><%= @address.street %></span>
+	<br/>
+
+	<span>City:</span>
+	<span><%= @address.city %></span>
+	<br/>
+
+	<span>State:</span>
+	<span><%= @address.state %></span>
+	<br/>
+
+	<span>Zip:</span>
+	<span><%= @address.zip %></span>
+	<br/>
+	
+</h3>
+<%= link_to '<button type="button"> Edit </button>'.html_safe, edit_address_path(@address) %> 
+<%= link_to '<button type="button"> Person </button>'.html_safe, person_path(@address.person) %>
+

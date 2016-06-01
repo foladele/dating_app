@@ -1,0 +1,42 @@
+
+<div class ="home">
+	<%if @person.user_id == @user.id %>
+		<h3>Hello <%= @person.name %>!</h3>
+	<%else%>
+		<h3>More about <%= @person.name %> ...</h3>
+	<%end%>
+
+
+</div>
+
+<%= image_tag @person.image.url(:medium) %>
+<hr/>
+<%= link_to '<button type="button"> People </button>'.html_safe, people_path %> |
+
+<%if @person.user_id == @user.id %>
+	<%= link_to '<button type="button"> Edit </button>'.html_safe, edit_person_path(@person) %> |
+
+	<%= link_to '<button type="button"> Delete </button>'.html_safe, person_path(@person), method: :delete %> 
+	|
+
+	<%if @person.address != nil  %>
+		<%= link_to '<button type="button"> Show Address </button>'.html_safe, address_path(@person.address) %>
+	<%else%>
+
+		<%= link_to '<button type="button"> Add Address </button>'.html_safe, new_address_path(person_id: @person.id) %>
+	<%end%>
+	|
+<%end%>
+
+<% if @person.hobbies != nil %>
+	<%= link_to '<button type="button"> See hobbies </button>'.html_safe, person_hobby_path(@person, @person.hobbies) %>
+<%end%>  
+
+<%if @person.user_id != @user.id %>
+	| 	<%if @person.address != nil  %>
+			<%= link_to '<button type="button"> Show Address </button>'.html_safe, address_path(@person.address) %>
+		<%end%>
+<%end%> |
+
+<%= link_to '<button type="button"> logout </button>'.html_safe, session_path(@person.user_id), method: :delete %>
+
