@@ -1,7 +1,8 @@
 class PeopleController < ApplicationController
   def index
     @user_id = current_user.id
-    @people = Person.all
+    @people = Person.all#.where("id != ?", current_user.id)
+    @people - [@user_id]
     if params[:search]
       @people = Person.search(params[:search])
     else
